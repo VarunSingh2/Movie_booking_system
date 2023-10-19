@@ -1,38 +1,50 @@
-create database Movie_tickets;
-use Movie_tickets;
-create table user(
-User_Id int NOT NULL,
-First_Name varchar(20),
-Last_Name varchar(20),
-Phone_no varchar(10),
-Primary Key(User_Id)
-
+create table users (
+user_id int primary key,
+first_name varchar(120),
+last_name varchar(255),
+phone_no varchar(10)
 );
 
-create table CinemaHall(
-Hall_Id int NOT NULL,
-Hall_name varchar(20),
-No_of_seats varchar(5)
-
+create table movies (
+movie_id int primary key,
+title varchar(255),
+ratings tinyint,
+director_id int,
+foreign key(director_id) references directors(director_id) 
 );
-create table Tickets(
-Ticket_Id int NOT NULL,
-Price varchar(10),
-User_Id int,
-Hall_Id int,
-FOREIGN KEY(User_Id) references user(User_Id),
-FOREIGN KEY(Hall_Id) references CinemaHall(Hall_Id)
 
 
+create table movies_actors_mapping(
+movie_actor_id int primary key,
+movie_id int,
+actor_id int,
+foreign key(movie_id) references movies(movie_id),
+foreign key(actor_id) references actors(actor_id)
+) 
+
+create table directors (
+director_id int primary key,
+first_name varchar(120),
+last_name varchar(255)
 );
-create table Movies(
-Movie_Id int NOT NULL,
-Movie_title varchar(100),
-Ratings varchar(5)
+
+create table actors(
+actor_id int primary key,
+first_name varchar(120),
+last_name varchar(255)
+)
+
+create table cinema_halls(
+cinema_hall_id int primary key,
+name varchar(100)
 );
-Alter table Movies ADD primary key(Movie_Id);
-desc CinemaHall;
-Alter table Tickets ADD Movie_Id int;
-Alter table Tickets ADD foreign key(Movie_Id) references Movies(Movie_Id);
-desc Tickets;
-Select * from Tickets;
+
+create table tickets(
+ticket_id int primary key,
+cinema_hall_id int,
+user_id int,
+movie_id int,
+foreign key(cinema_hall_id) references cinema_halls(cinema_hall_id),
+foreign key(user_id) references users(user_id),
+foreign key(movie_id) references movies(movie_id)
+)
