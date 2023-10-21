@@ -33,7 +33,7 @@ VALUES
 INSERT INTO movies (movie_id, title, ratings, director_id)
 VALUES
     (1, 'Batman', 8, 1),
-    (2, 'Dark Knight Rises', 8, 1),
+    (2, 'Batman Rises', 8, 1),
     (3, 'Oppenheimer', 9, 1),
     (4, 'Terminator', 9, 2),
     (5, 'Titanic', 9, 2),
