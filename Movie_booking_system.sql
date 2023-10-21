@@ -47,4 +47,12 @@ movie_id int,
 foreign key(cinema_hall_id) references cinema_halls(cinema_hall_id),
 foreign key(user_id) references users(user_id),
 foreign key(movie_id) references movies(movie_id)
-)
+);
+
+CREATE TABLE user_activity_log(
+    log_id    INT PRIMARY KEY AUTO_INCREMENT,
+    user_id   INT,
+    action    VARCHAR(255),
+    timestamp DATETIME,
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
