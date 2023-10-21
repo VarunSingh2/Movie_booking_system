@@ -135,3 +135,9 @@ VALUES
     (23, 3, 7, 12),
     (24, 4, 7, 12)
 ;
+
+-- insert new user with no tickets for left outer join
+insert into users values(8, 'Preeti', 'Kumar' , '1294');
+
+-- insert new ticket to log it into user_activity_log
+insert into tickets values(25, 4, 2, 8);
