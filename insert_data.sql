@@ -141,3 +141,6 @@ insert into users values(8, 'Preeti', 'Kumar' , '1294');
 
 -- insert new ticket to log it into user_activity_log
 insert into tickets values(25, 4, 2, 8);
+
+-- update query for batman rises again (if not updated above
+update movies  set title='Batman Rises' where movie_id=2;
